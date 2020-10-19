@@ -1,0 +1,124 @@
+<mvc:View controllerName="dinosol.din-colecciones-tiecol.controller.Result" xmlns:mvc="sap.ui.core.mvc" xmlns:table="sap.ui.table"
+	displayBlock="true" xmlns:fb="sap.ui.comp.filterbar" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form">
+	<Page showHeader="false">
+		<fb:FilterBar id="mainFilterBar" header="{i18n>title.busqueda}" showRestoreOnFB="true" showClearOnFB="true" showGoOnFB="true"
+			clear=".onPressClear" showFilterConfiguration="true" filterBarExpanded="true" search=".onPressSearch">
+			<fb:filterGroupItems>
+				<!--■ Artículo o artículos-->
+				<!--■ Módulo o módulos-->
+				<!--■ Surtido o surtidos-->
+				<!--■ Jerarquía o jerarquías (que permita el *)-->
+				<!--■ Sector/es / Sección/es / Familia/as / Subfamilia/as/-->
+				<!--■ Proveedor o proveedores-->
+				<fb:FilterGroupItem groupName="Filtros" groupTitle="Articulo" name="A" label="{i18n>label.modulo}" labelTooltip="Modulo"
+					visibleInFilterBar="true">
+					<fb:control>
+						<MultiInput id="moduloFilter" tokens="{search>/Modulo}" name="Modulo" showValueHelp="true" valueHelpRequest=".onRequestValueHelpModulo"
+							change="onChangeMulti" tokenUpdate="onTokenUpdate" width="400px">
+							<tokens>
+								<Token key="{search>Modulo}" text="{search>Modulo}"/>
+							</tokens>
+						</MultiInput>
+					</fb:control>
+				</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="Filtros" groupTitle="Articulo" name="B" label="{i18n>label.surtido}" labelTooltip="Surtido"
+					visibleInFilterBar="true">
+					<fb:control>
+						<MultiInput id="surtidoFilter" tokens="{search>/Surtido}" name="Surtido" showValueHelp="true" valueHelpRequest=".onRequestValueHelpSurtido"
+							change="onChangeMulti" tokenUpdate="onTokenUpdate" width="400px">
+							<tokens>
+								<Token key="{search>Surtido}" text="{search>Surtido}"/>
+							</tokens>
+						</MultiInput>
+					</fb:control>
+				</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="Filtros" groupTitle="Articulo" name="C" label="{i18n>label.tienda}" labelTooltip="Tienda"
+					visibleInFilterBar="true">
+					<fb:control>
+						<MultiInput id="tiendaFilter" tokens="{search>/Tienda}" name="Tienda" showValueHelp="true" valueHelpRequest=".onRequestValueHelpTienda"
+							change="onChangeMulti" tokenUpdate="onTokenUpdate" width="400px">
+							<tokens>
+								<Token key="{search>Tienda}" text="{search>Tienda}"/>
+							</tokens>
+						</MultiInput>
+					</fb:control>
+				</fb:FilterGroupItem>
+			</fb:filterGroupItems>
+		</fb:FilterBar>
+		<Table id="tableResult" class="sapUiResponsiveMargin" mode="None" width="auto" items="{ path : 'data>/articulos'}" alternateRowColors="true"
+			columns="{columns>/data}" growing="true" growingThreshold="100">
+			<headerToolbar>
+				<Toolbar>
+					<content>
+						<Title text="{i18n>title.articulos}" titleStyle="H3"/>
+						<Title text="{= ${data>/articulos}? '('+${data>/articulos}.length+')' : '(0)'}" titleStyle="H3"/>
+						<ToolbarSpacer/>
+						<OverflowToolbarButton icon="sap-icon://group-2" press=".onPressGroupTable" type="Transparent"/>
+						<OverflowToolbarButton icon="sap-icon://action-settings" tooltip="Column Settings" type="Transparent" press="onPressPersoTable"
+							visible="false"/>
+						<ToggleButton pressed="false" text="{i18n>button.filtrarFallidos}" press="onPressFiltrarSemaforo" type="Transparent" visible="false"/>
+						<OverflowToolbarButton press=".onPressDescargar" type="Transparent" icon="sap-icon://download"/>
+					</content>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column visible="{columns>visible}" width="{columns>width}">
+					<header>
+						<Label text="{columns>text}"/>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem vAlign="Middle">
+					<cells>
+						
+						<!--
+						Modulo: "10000033101"
+						DescripcionModulo: "PRUEBAS CENTRO MODELO"
+						FechaInicioModulo: "20180511"
+						FechaFinModulo: "99991231"
+						
+						Surtido: "231"
+						DenominacionSurtido: "pruebas CENTROS MODELO (canal 11 y 14)"
+						FechaInicioSurtido: "20180511"
+						FechaFinSurtido: "99991231"
+						
+						Tienda: "9003"
+						DescripcionTienda: "MILLER,"
+						FechaInicioTienda: "20180706"
+						FechaFinTienda: "99991231"
+						
+						Canal: "11"
+						DescripcionCanal: "CD Super-Hiperdino"
+						
+						FechaInicioAsignacion: "20180511"
+						FechaFinAsignacion: "99991231"
+						 -->
+						<layout:VerticalLayout>
+							<Text text="{data>Modulo}"/>
+							<Text text="{data>DescripcionModulo}" class="boldText"/>
+							<Text text="{parts: ['data>FechaInicioModulo', 'data>FechaFinModulo'], formatter: '.formatter.formatDateShowTwo'}" class="smallText"/>
+						</layout:VerticalLayout>
+						
+						<layout:VerticalLayout>
+							<Text text="{data>Surtido}"/>
+							<Text text="{data>DenominacionSurtido}" class="boldText"/>
+							<Text text="{parts: ['data>FechaInicioSurtido', 'data>FechaFinSurtido'], formatter: '.formatter.formatDateShowTwo'}" class="smallText"/>
+						</layout:VerticalLayout>
+						
+						<layout:VerticalLayout>
+							<Text text="{data>Tienda}"/>
+							<Text text="{data>DescripcionTienda}" class="boldText"/>
+							<Text text="{parts: ['data>FechaInicioTienda', 'data>FechaFinTienda'], formatter: '.formatter.formatDateShowTwo'}" class="smallText"/>
+						</layout:VerticalLayout>
+						
+						<Text text="{data>Canal} - {data>DescripcionCanal}"/>
+						<Text text="{parts: ['data>FechaInicioAsignacion', 'data>FechaFinAsignacion'], formatter: '.formatter.formatDateShowTwo'}"/>
+						
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</Page>
+</mvc:View>

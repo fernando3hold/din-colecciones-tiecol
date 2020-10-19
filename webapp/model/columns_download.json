@@ -1,0 +1,51 @@
+		{
+		"data": [{
+			"field": "Modulo",
+			"text": "Modulo"
+		}, {
+			"field": "DescripcionModulo",
+			"text": "Descripcion Modulo"
+		},{
+			"field": "FechaInicioModulo",
+			"text": "Fecha Inicio Modulo"
+		},{
+			"field": "FechaFinModulo",
+			"text": "Fecha Fin Modulo"
+		},{
+			"field": "Surtido",
+			"text": "Surtido"
+		},{
+			"field": "DescripcionSurtido",
+			"text": "Descripcion Surtido"
+		},{
+			"field": "FechaInicioSurtido",
+			"text": "Fecha Inicio Surtido"
+		},{
+			"field": "FechaFinSurtido",
+			"text": "Fecha Fin Surtido"
+		}, {
+			"field": "Tienda",
+			"text": "Tienda"
+		}, {
+			"field": "DescripcionTienda",
+			"text": "Descripcion Tienda"
+		},{
+			"field": "FechaInicioTienda",
+			"text": "Fecha Inicio Tienda"
+		},{
+			"field": "FechaFinTienda",
+			"text": "Fecha Fin Tienda"
+		}, {
+			"field": "Canal",
+			"text": "Canal"
+		}, {
+			"field": "DescripcionCanal",
+			"text": "Descripcion Canal"
+		},{
+			"field": "FechaInicioAsignacion",
+			"text": "Fecha Inicio Asignacion"
+		},{
+			"field": "FechaFinAsignacion",
+			"text": "Fecha Fin Asignacion"
+		}]
+	}

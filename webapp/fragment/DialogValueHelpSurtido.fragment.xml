@@ -1,0 +1,26 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:helpDialog="sap.ui.comp.valuehelpdialog" xmlns:uxap="sap.uxap">
+	<helpDialog:ValueHelpDialog id="valueHelpDialogSurtido" title="{i18n>title.searchHelpSurtido}" supportRanges="false" tokenDisplayBehavior="idOnly"
+		cancel=".closeValueHelpDialogSurtido" ok="onOKValueHelpSurtido" filterMode="true" key="Surtido" descriptionKey="Descripcion">
+		<helpDialog:filterBar>
+			<fb:FilterBar showRestoreOnFB="false" showClearOnFB="true" showGoOnFB="true" clear=".clearFiltersValueHelpSurtido"
+				showFilterConfiguration="false" filterBarExpanded="true" search=".onSearchValueHelpSurtido" >
+				<!-- considerGroupTitle="true" -->
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem groupName="Filtros" groupTitle="Surtido" name="A" label="{i18n>label.surtido}" labelTooltip="{i18n>label.surtido}"
+						visibleInFilterBar="true">
+						<fb:control>
+							<Input name="Surtido"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="Filtros" groupTitle="Descripcion" name="B" label="{i18n>label.descripcion}" labelTooltip="{i18n>label.descripcion}"
+						visibleInFilterBar="true">
+						<fb:control>
+							<Input name="Descripcion"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</helpDialog:filterBar>
+	</helpDialog:ValueHelpDialog>
+</core:FragmentDefinition>

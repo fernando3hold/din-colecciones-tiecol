@@ -1,0 +1,168 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "dinosol.din-colecciones-tiecol",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"ZOD_COLECCIONES_SRV": {
+				"uri": "/sap/opu/odata/sap/ZOD_COLECCIONES_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"ZOD_PLANTILLAS_SRV": {
+				"uri": "/sap/opu/odata/sap/ZOD_PLANTILLAS_SRV/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"COLUMNS": {
+				"uri": "model/columns.json"
+			},
+			"COLUMNS_DOWNLOAD": {
+				"uri": "model/columns_download.json"
+			},
+			"MOCKDATA": {
+				"uri": "model/mockdata.json"
+			}
+		}
+	},
+	"sap.ui": {
+		"fullWidth": true,
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "dinosol.din-colecciones-tiecol.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "dinosol.din-colecciones-tiecol.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "ZOD_COLECCIONES_SRV"
+			},
+			"plantillas": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "ZOD_PLANTILLAS_SRV"
+			},
+			"search": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"data": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"columns": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "COLUMNS"
+			},
+			"columns_download": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "COLUMNS_DOWNLOAD"
+			},
+			"mockdata": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "MOCKDATA"
+			},
+			"tiendas": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"tiendasObj": {
+				"type": "sap.ui.model.json.JSONModel"
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			],
+			"js": [
+				{
+					"uri": "js/xlsx.full.min.js"
+				},
+				{
+					"uri": "js/jszip.js"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "dinosol.din-colecciones-tiecol.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "RouteResult",
+					"pattern": "",
+					"target": [
+						"TargetResult"
+					]
+				}
+			],
+			"targets": {
+				"TargetResult": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "Result",
+					"viewName": "Result"
+				}
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zui5_colec_tico/webapp",
+		"_version": "1.1.0"
+	}
+}
