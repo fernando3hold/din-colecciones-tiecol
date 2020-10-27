@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:fb="sap.ui.comp.filterbar"
 	xmlns:helpDialog="sap.ui.comp.valuehelpdialog" xmlns:uxap="sap.uxap">
-	<helpDialog:ValueHelpDialog id="valueHelpDialogSurtido" title="{i18n>title.searchHelpSurtido}" supportRanges="false" tokenDisplayBehavior="idOnly"
+	<helpDialog:ValueHelpDialog id="valueHelpDialogSurtido" title="{i18n>title.searchHelpSurtido}" supportRanges="false" tokenDisplayBehaviour="idOnly"
 		cancel=".closeValueHelpDialogSurtido" ok="onOKValueHelpSurtido" filterMode="true" key="Surtido" descriptionKey="Descripcion">
 		<helpDialog:filterBar>
 			<fb:FilterBar showRestoreOnFB="false" showClearOnFB="true" showGoOnFB="true" clear=".clearFiltersValueHelpSurtido"

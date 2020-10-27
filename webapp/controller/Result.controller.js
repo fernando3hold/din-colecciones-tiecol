@@ -356,6 +356,22 @@ sap.ui.define([
 			oEvent.getSource().setSecondDateValue(dSecondValueInicio);
 		},
 
+		parseDateDownload: function (sDate) {
+
+			// Esperamos aaaaMMdd
+			if (sDate) {
+				var sDay = parseInt(sDate.substring(6, 8)),
+					sMes = parseInt(sDate.substring(4, 6)),
+					sAno = parseInt(sDate.substring(0, 4));
+
+				sDay = sDay < 10 ? "0" + sDay : "" + sDay;
+				sMes = sMes < 10 ? "0" + sMes : "" + sMes;
+				return sAno === 0 ? "" : sDay + "/" + sMes + "/" + sAno;
+			}
+			return "";
+
+		},
+
 		onPressDescargar: function () {
 
 			var aFinalOrdenTextos = this.getComponentModelProperty("columns_download", "/data").map(function (oCol) {
@@ -379,9 +395,10 @@ sap.ui.define([
 				delete oData.__metadata;
 				var oNew = {};
 				for (var sProp in oData) {
-
+					var sValue;
 					if (sProp in oColsFieldText) {
-						oNew[oColsFieldText[sProp]] = oData[sProp];
+						sValue = oData[sProp];
+						oNew[oColsFieldText[sProp]] = sProp.indexOf("Fecha") >= 0 ? this.parseDateDownload(sValue) : sValue;
 					}
 				}
 				return oNew;
